@@ -15,7 +15,8 @@
     "config": "^3.2.3",
     "consign": "0.1.6",
     "express": "^4.17.1",
-    "firebase": "^8.6.8"
+    "firebase": "^8.6.8",
+    "firebase-admin": "^9.9.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
