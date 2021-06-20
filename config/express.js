@@ -1,3 +1,5 @@
+import cors from 'cors';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('config');
@@ -11,7 +13,7 @@ module.exports = () => {
 
   // MIDDLEWARES
   app.use(bodyParser.json());
-
+  app.use(cors());
   consign({ cwd: 'api' })
     .then('data')
     .then('controllers')
