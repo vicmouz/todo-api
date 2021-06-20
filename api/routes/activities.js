@@ -1,16 +1,7 @@
 module.exports = app => {
   const controller = app.controllers.activities;
-  app.route('/', function(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-      'Access-Control-Allow-Methods',
-      'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-    ); // If needed
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-Requested-With,content-type'
-    ); // If needed
-    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+  app.route.get('/', (req, res) => {
+    res.send('Server started');
   });
   app.route('/api/v1/activities').get(controller.listActivities);
   app.route('/api/v1/new_activity').post(controller.createActivity);

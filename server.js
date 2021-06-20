@@ -1,9 +1,9 @@
-import cors from 'cors';
-
 const admin = require('firebase-admin');
+const cors = require('cors');
 const app = require('./config/express')();
 const serviceAccount = require('./serviceAccountKey.json');
 
+app.use(cors());
 const port = app.get('port');
 // initialize admin SDK using serciceAcountKey
 admin.initializeApp({
