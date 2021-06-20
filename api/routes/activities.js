@@ -1,6 +1,11 @@
-module.exports = app => {
-  const controller = app.controllers.activities;
+import { Router } from 'express';
+import ActivitiesController from '../controllers/ActivitiesController';
 
-  app.route('/api/v1/activities')
-    .get(controller.listActivities);
-}
+const routes = new Router();
+routes.get('/', (req, res) => {
+  res.send('Server started');
+});
+
+routes.get('/activities', ActivitiesController.index);
+
+export default routes;
