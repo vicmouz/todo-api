@@ -14,6 +14,7 @@ module.exports = () => {
   // MIDDLEWARES
   app.use(bodyParser.json());
   app.use(cors());
+  app.use(express.json());
   consign({ cwd: 'api' })
     .then('data')
     .then('controllers')
