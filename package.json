@@ -1,33 +1,47 @@
 {
   "name": "todo-api",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "start": "nodemon server",
-    "serve": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/server.js",
+    "serve": "node ./dist/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "debug": "node --inspect -r sucrase/register src/server.js",
+    "queue": "nodemon src/queue.js",
+    "pretest": "NODE_ENV=test sequelize db:migrate",
+    "test": "NODE_ENV=test jest --forceExit --runInBand --verbose",
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "server-logs": "sucrase-node ./src/lib/Logs.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "config": "^3.2.3",
-    "consign": "0.1.6",
+    "bee-queue": "^1.4.0",
     "cors": "^2.8.5",
-    "express": "^4.16.3",
-    "firebase": "^8.6.8",
-    "firebase-admin": "^9.9.0"
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-brute": "^1.0.1",
+    "express-handlebars": "^3.1.0",
+    "express-rate-limit": "^5.0.0",
+    "firebase-admin": "^9.9.0",
+    "helmet": "^3.20.0",
+    "socket.io": "^2.3.0",
+    "winston": "^3.3.3",
+    "youch": "^2.0.10"
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "@types/jest": "^24.0.15",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "sucrase": "^3.10.1",
+    "supertest": "^4.0.2"
   },
   "engines": {
     "node": "<= 10.16.3",
