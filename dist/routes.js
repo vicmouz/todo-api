@@ -7,7 +7,7 @@ routes.get('/', (req, res) => {
 });
 routes.post('/new_todo', _TODOController2.default.store);
 routes.get('/todos', _TODOController2.default.index);
-routes.put('/todos/update/:comment_id', _TODOController2.default.update);
-routes.delete('/todos/remove/:comment_id', _TODOController2.default.delete);
+routes.put('/todos/update/:todo_id', _TODOController2.default.update);
+routes.delete('/todos/remove/:todo_id', _TODOController2.default.delete);
 
 exports. default = routes;

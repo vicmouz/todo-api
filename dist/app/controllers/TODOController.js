@@ -5,9 +5,7 @@ class TODOController {
     try {
       const { todo } = req.body;
       const todos = admin.firestore().collection('todo');
-      console.log(todo);
       const data = await todos.add({ todo, status: 0 });
-      console.log('new dialogue written to database');
       return res.json({ msg: 'success', data });
     } catch (err) {
       return res
@@ -19,14 +17,12 @@ class TODOController {
   async index(req, res) {
     try {
       const todos = admin.firestore().collection('todo');
-      console.log('get ');
       const todoList = [];
       const snapshot = await todos.get();
       snapshot.forEach(doc => {
         const { id } = doc;
         const data = doc.data();
         todoList.push({ id, data });
-        console.log(doc.id, '=>', doc.data());
       });
 
       return res.json(todoList);
