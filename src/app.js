@@ -32,7 +32,7 @@ class App {
   }
 
   routes() {
-    this.server.use(`/api/v${process.env.API_VERSION}`, routes);
+    this.server.use(`/api/v1`, routes);
   }
 
   exceptionHandle() {

@@ -1,28 +1,12 @@
-Object.defineProperty(exports, '__esModule', { value: true });
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-require('./bootstrap');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }require('./bootstrap');
 
-const _express = require('express');
-
-const _express2 = _interopRequireDefault(_express);
-const _http = require('http');
-
-const _http2 = _interopRequireDefault(_http);
-const _cors = require('cors');
-
-const _cors2 = _interopRequireDefault(_cors);
-const _helmet = require('helmet');
-
-const _helmet2 = _interopRequireDefault(_helmet);
-const _youch = require('youch');
-
-const _youch2 = _interopRequireDefault(_youch);
+var _express = require('express'); var _express2 = _interopRequireDefault(_express);
+var _http = require('http'); var _http2 = _interopRequireDefault(_http);
+var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
+var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
+var _youch = require('youch'); var _youch2 = _interopRequireDefault(_youch);
 require('express-async-errors');
-const _routes = require('./routes');
-
-const _routes2 = _interopRequireDefault(_routes);
+var _routes = require('./routes'); var _routes2 = _interopRequireDefault(_routes);
 
 // import reqRes from './app/middlewares/intercept';
 
@@ -31,7 +15,7 @@ class App {
     global.__basedir = `${__dirname}/..`;
     process.env.TZ = 'America/Recife';
 
-    this.server = _express2.default.call(void 0);
+    this.server = _express2.default.call(void 0, );
 
     this.app = _http2.default.createServer(this.server);
 
@@ -41,14 +25,14 @@ class App {
   }
 
   middlewares() {
-    this.server.use(_helmet2.default.call(void 0));
+    this.server.use(_helmet2.default.call(void 0, ));
     this.server.use(_cors2.default.call(void 0, { origin: true }));
 
     this.server.use(_express2.default.json());
   }
 
   routes() {
-    this.server.use(`/api/v${process.env.API_VERSION}`, _routes2.default);
+    this.server.use(`/api/v1`, _routes2.default);
   }
 
   exceptionHandle() {
@@ -68,4 +52,4 @@ class App {
     });
   }
 }
-exports.default = new App().app;
+exports. default = new App().app;
