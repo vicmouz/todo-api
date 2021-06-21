@@ -2,7 +2,6 @@ import './bootstrap';
 
 import express from 'express';
 import http from 'http';
-import socketIO from 'socket.io';
 import cors from 'cors';
 import helmet from 'helmet';
 import Youch from 'youch';
@@ -27,20 +26,9 @@ class App {
 
   middlewares() {
     this.server.use(helmet());
-
-    // if (process.env.NODE_ENV === 'production') {
-    //   this.server.use(
-    //     cors({
-    //       origin: process.env.FRONT_URL,
-    //     })
-    //   );
-    // } else {
-    this.server.use(cors());
-    // }
+    this.server.use(cors({ origin: true }));
 
     this.server.use(express.json());
-
-    // this.server.use(reqRes);
   }
 
   routes() {
@@ -64,8 +52,4 @@ class App {
     });
   }
 }
-
-// const loginRouter = require('./routes/login');
-// app.use('/login', loginRouter);
-
 export default new App().app;
