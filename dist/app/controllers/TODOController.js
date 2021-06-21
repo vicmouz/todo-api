@@ -39,9 +39,9 @@ class TODOController {
 
   async update(req, res) {
     try {
-      const { activity_id } = req.params;
+      const { todo_id } = req.params;
       const todos = admin.firestore().collection('todo');
-      todos.doc(activity_id).update(req.body);
+      todos.doc(todo_id).update(req.body);
       return res.status(200).json({ msg: 'object updated' });
     } catch (err) {
       return res.status(400).json({
@@ -53,9 +53,9 @@ class TODOController {
 
   async delete(req, res) {
     try {
-      const { activity_id } = req.params;
+      const { todo_id } = req.params;
       const todos = admin.firestore().collection('todo');
-      todos.doc(activity_id).delete();
+      todos.doc(todo_id).delete();
       return res.status(200).json({ msg: 'object removed' });
     } catch (err) {
       return res
